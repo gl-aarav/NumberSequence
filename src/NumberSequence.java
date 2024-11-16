@@ -64,7 +64,8 @@
 
 import java.util.Scanner;
 
-public class NumberSequence {
+public class NumberSequence 
+{
     // Field Variables
     private int startNum;          // The first number in the sequence
     private int commonDifference;  // The common difference between consecutive terms
@@ -78,7 +79,8 @@ public class NumberSequence {
     private boolean onPattern;     // Flag to check if user is guessing the pattern
 
     // Constructor to initialize variables with default values
-    public NumberSequence() {
+    public NumberSequence() 
+    {
         startNum = 0;
         commonDifference = 0;
         nextTerm = 0;
@@ -92,14 +94,16 @@ public class NumberSequence {
     }
 
     // Main method to run the sequence game
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // Create an instance of NumberSequence and start the game
         NumberSequence sequence = new NumberSequence();
         sequence.runSequence();
     }
 
     // Method to run the sequence game
-    public void runSequence() {
+    public void runSequence() 
+    {
         System.out.println("Welcome to NumberSequence!\n\n");
 
         // Generate the sequence and display it
@@ -110,12 +114,16 @@ public class NumberSequence {
         getInput();
 
         // Allow user up to 3 incorrect guesses
-        do {
-            if (incorrectMeter < 3 && userInput != nextTerm) {
+        do 
+        {
+            if (incorrectMeter < 3 && userInput != nextTerm) 
+            {
                 incorrectMeter++; // Increment incorrect guess counter
                 printMessage();    // Print feedback message
                 getInput();        // Get new guess from user
-            } else {
+            } 
+            else 
+            {
                 printMessage();    // Print the final message if correct or 3 incorrect guesses reached
                 stopLooping = true; // End the loop
             }
@@ -128,7 +136,8 @@ public class NumberSequence {
     }
 
     // Method to create the sequence
-    public void createSequence() {
+    public void createSequence() 
+    {
         // Generate a random startNum between -10 and 10
         startNum = (int)(Math.random() * 21) - 10;
         // Generate a random commonDifference between 1 and 10
@@ -141,12 +150,16 @@ public class NumberSequence {
     }
 
     // Method to print the sequence
-    public String printSequence() {
+    public String printSequence() 
+    {
         // Base case: print sequence and stop when we have printed enough terms
-        if (printingSequence == 0 && !onPattern) {
+        if (printingSequence == 0 && !onPattern) 
+        {
             System.out.println("__");
             return "";
-        } else {
+        } 
+        else 
+        {
             // Print the current term, then move to the next term
             printingSequence--;
             System.out.print(startNum + ", ");
@@ -160,17 +173,21 @@ public class NumberSequence {
         Scanner in = new Scanner(System.in);
         
         // If the user hasn't made an incorrect guess yet, ask for the next term
-        if (incorrectMeter == 0 && !onPattern) {
+        if (incorrectMeter == 0 && !onPattern) 
+        {
             System.out.print("\nWhat is the next term in the sequence: ");
             userInput = in.nextInt();
         } 
         // If the user has made an incorrect guess, continue asking for the next term
-        else if (incorrectMeter != 0 && !onPattern) {
+        else if (incorrectMeter != 0 && !onPattern) 
+        {
             userInput = in.nextInt();
         }
         // Once we are asking for the pattern, prompt accordingly
-        else {
-            System.out.print("\nWhat is the pattern of the sequence (use \"add __\"): ");
+        else 
+        {
+
+            System.out.print("\nWhat is the pattern of the sequence (For example, \"add 12\"): ");
             userPatternInput = in.nextLine();
         }
     }
@@ -178,24 +195,30 @@ public class NumberSequence {
     // Method to print feedback based on user's guess
     public void printMessage() {
         // If the user has guessed incorrectly 3 times, print the correct next term
-        if (incorrectMeter >= 3 && !onPattern) {
+        if (incorrectMeter >= 3 && !onPattern) 
+        {
             System.out.println("\nIncorrect! The next term was: " + nextTerm);
+            System.out.println("Also, The pattern was: " + pattern);
         }
         // If the user's guess for the next term is incorrect, prompt them to try again
-        else if (nextTerm != userInput && !onPattern) {
+        else if (nextTerm != userInput && !onPattern) 
+        {
             System.out.print("\nTry again. What is the next number in the sequence: ");
         }
         // If the user's guess is correct, congratulate them
-        else if (userInput == nextTerm && incorrectMeter < 3 && !onPattern) {
+        else if (userInput == nextTerm && incorrectMeter < 3 && !onPattern) 
+        {
             System.out.println("\nCorrect! The next term was: " + nextTerm);
         } 
         // If the user is guessing the pattern, check their answer
-        else if (pattern.equalsIgnoreCase(userPatternInput)) {
-            System.out.println("\nCorrect! The pattern is: " + pattern);
+        else if (pattern.equalsIgnoreCase(userPatternInput)) 
+        {
+            System.out.println("\nCorrect! The pattern was: " + pattern);
         }
         // If the pattern guess is incorrect, print the correct pattern
-        else if (!pattern.equalsIgnoreCase(userPatternInput)) {
-            System.out.println("\nIncorrect! The pattern was: " + pattern);
+        else if (!pattern.equalsIgnoreCase(userPatternInput)) 
+        {
+            System.out.println("\nIncorrect! The pattern you entered, " + userPatternInput + " was wrong, the correct pattern was: " + pattern);
         }
     }
 }
