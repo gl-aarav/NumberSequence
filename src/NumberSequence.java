@@ -108,6 +108,7 @@ public class NumberSequence
 
         // Generate the sequence and display it
         createSequence();
+       	System.out.println("Generated Sequence: ");
         printSequence();
         
         // Prompt user to guess the next term in the sequence
@@ -152,6 +153,7 @@ public class NumberSequence
     // Method to print the sequence
     public String printSequence() 
     {
+ 
         // Base case: print sequence and stop when we have printed enough terms
         if (printingSequence == 0 && !onPattern) 
         {
