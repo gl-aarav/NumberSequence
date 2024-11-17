@@ -242,7 +242,7 @@ public class NumberSequenceV2
 		{
 			if (printingSequence == 0 && !onPattern) 
 			{
-				System.out.println("__");
+				System.out.println("__"); // Print Line for user guess
 				return "";
 			} 
 			else 
@@ -258,7 +258,7 @@ public class NumberSequenceV2
 		{
 			if (printingSequence == 0 && !onPattern) 
 			{
-				System.out.println("__");
+				System.out.println("__"); // Print the line
 				return "";
 			} 
 			else 
@@ -291,7 +291,7 @@ public class NumberSequenceV2
 		else 
 		{
 
-			System.out.print("\nWhat is the pattern of the sequence (For example, \"add 12\", \"substract 8\", \"multiply by 3\", \"divide by 8\"): ");
+			System.out.print("\nWhat is the pattern of the sequence (For example, \"add 12\", \"substract 8\")");
 			userPatternInput = in.nextLine();
 		}
 	}
