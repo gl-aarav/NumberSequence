@@ -199,12 +199,13 @@ public class NumberSequenceV2
 		{
 			do
 			{
-				commonDifference = (int)((Math.random() * 11) - 5);
+				commonDifference = (int)((Math.random() * 3) + 3);
 			} while (commonDifference > -2 && commonDifference < 2);
 
-			int Power = (int)(Math.random()*3)+6;
-			startNum = (int)(Math.pow(commonDifference, Power+1));
-			nextTerm = (int)(Math.pow(commonDifference, Power-4));
+			int Multiply = (int)(Math.random()*3)+2;
+			int Power = (int)(Math.random()*3)+5;
+			startNum = Multiply * (int)(Math.pow(commonDifference, Power+1));
+			nextTerm = Multiply * (int)(Math.pow(commonDifference, Power-4));
 			// Set the pattern for the sequence (e.g., "add 5")
 			pattern = "divide by " + commonDifference;
 		}
