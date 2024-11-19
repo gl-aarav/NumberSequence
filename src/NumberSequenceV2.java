@@ -126,7 +126,7 @@ public class NumberSequenceV2
 				if (incorrectMeter < 3 && userInput != nextTerm) {
 					printMessage();    // Print feedback message
 				}
-			
+
 				if (incorrectMeter < 3 && userInput != nextTerm) {
 					getInput();        // Get new guess from user
 				}
