@@ -16,6 +16,7 @@
  *       pattern (the string representation of the sequence's pattern),
  *       userPatternInput (stores the user's guess for the pattern),
  *       onPattern (boolean flag to check if the user is guessing the pattern).
+ *       multiplyOrAdd (If the user wants to add, multiply, subtract, or divide).
  * 
  * - NumberSequence Constructor
  *     - Initialize all fields to default values (startNum = 0, commonDifference = 0, etc.).
@@ -122,8 +123,13 @@ public class NumberSequenceV2
 			if (incorrectMeter < 3 && userInput != nextTerm) 
 			{
 				incorrectMeter++; // Increment incorrect guess counter
-				printMessage();    // Print feedback message
-				getInput();        // Get new guess from user
+				if (incorrectMeter < 3 && userInput != nextTerm) {
+					printMessage();    // Print feedback message
+				}
+			
+				if (incorrectMeter < 3 && userInput != nextTerm) {
+					getInput();        // Get new guess from user
+				}
 			} 
 			else 
 			{
@@ -131,11 +137,13 @@ public class NumberSequenceV2
 				stopLooping = true; // End the loop
 			}
 		} while (incorrectMeter <= 3 && !stopLooping); // Loop until max incorrect guesses or correct guess
-
-		// Switch to pattern guessing mode after the sequence guessing loop
-		onPattern = true;
-		getInput();          // Get user input for the pattern
-		printMessage();      // Print the result of pattern guess
+		if(!stopLooping)
+		{
+			// Switch to pattern guessing mode after the sequence guessing loop
+			onPattern = true;
+			getInput();          // Get user input for the pattern
+			printMessage();      // Print the result of pattern guess
+		}
 	}
 	public void askMultiplyOrAdd()
 	{
@@ -193,7 +201,7 @@ public class NumberSequenceV2
 			{
 				commonDifference = (int)((Math.random() * 11) - 5);
 			} while (commonDifference > -2 && commonDifference < 2);
-			
+
 			int Power = (int)(Math.random()*3)+6;
 			startNum = (int)(Math.pow(commonDifference, Power+1));
 			nextTerm = (int)(Math.pow(commonDifference, Power-4));
