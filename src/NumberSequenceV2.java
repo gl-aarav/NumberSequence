@@ -137,7 +137,7 @@ public class NumberSequenceV2
 				stopLooping = true; // End the loop
 			}
 		} while (incorrectMeter <= 3 && !stopLooping); // Loop until max incorrect guesses or correct guess
-		if(!stopLooping)
+		if(!stopLooping || incorrectMeter < 3)
 		{
 			// Switch to pattern guessing mode after the sequence guessing loop
 			onPattern = true;
@@ -148,13 +148,13 @@ public class NumberSequenceV2
 	public void askMultiplyOrAdd()
 	{
 		Scanner in = new Scanner (System.in);
-		System.out.print("What do you want to do? Enter in the form of \"add\", \"substract\", \"multiply\" or \"divide\": ");
+		System.out.print("What do you want to do? Enter in the form of \"add\", \"subtract\", \"multiply\" or \"divide\": ");
 		do
 		{
 			multiplyOrAdd = in.nextLine();
-			if (!multiplyOrAdd.equalsIgnoreCase("Add") && !multiplyOrAdd.equalsIgnoreCase("multiply") && !multiplyOrAdd.equalsIgnoreCase("substract") && !multiplyOrAdd.equalsIgnoreCase("divide"))
-				System.out.println("Enter in the form of \"add\" or \"multiply\" or \"substract\" or \"divide\"");
-		} while (!multiplyOrAdd.equalsIgnoreCase("Add") && !multiplyOrAdd.equalsIgnoreCase("multiply") && !multiplyOrAdd.equalsIgnoreCase("substract") && !multiplyOrAdd.equalsIgnoreCase("divide"));
+			if (!multiplyOrAdd.equalsIgnoreCase("Add") && !multiplyOrAdd.equalsIgnoreCase("multiply") && !multiplyOrAdd.equalsIgnoreCase("subtract") && !multiplyOrAdd.equalsIgnoreCase("divide"))
+				System.out.println("Enter in the form of \"add\" or \"multiply\" or \"subtract\" or \"divide\"");
+		} while (!multiplyOrAdd.equalsIgnoreCase("Add") && !multiplyOrAdd.equalsIgnoreCase("multiply") && !multiplyOrAdd.equalsIgnoreCase("subtract") && !multiplyOrAdd.equalsIgnoreCase("divide"));
 	}
 
 	// Method to create the sequence
@@ -181,7 +181,7 @@ public class NumberSequenceV2
 			{
 				nextTerm = startNum - commonDifference * 5;
 				// Set the pattern for the sequence (e.g., "add 5")
-				pattern = "substract " + commonDifference;
+				pattern = "subtract " + commonDifference;
 			}
 		}
 		else if (multiplyOrAdd.equalsIgnoreCase("Multiply"))
@@ -299,7 +299,7 @@ public class NumberSequenceV2
 		else 
 		{
 
-			System.out.print("\nWhat is the pattern of the sequence (For example, \"add 12\", \"substract 8\")");
+			System.out.print("\nWhat is the pattern of the sequence (For example, \"add 12\", \"subtract 8\"): ");
 			userPatternInput = in.nextLine();
 		}
 	}
