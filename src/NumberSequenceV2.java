@@ -246,7 +246,7 @@ public class NumberSequenceV2
 				return printSequence();        // Recursive call to print the next term
 			}
 		}
-		else if (multiplyOrAdd.equalsIgnoreCase("Substract"))
+		else if (multiplyOrAdd.equalsIgnoreCase("Subtract"))
 		{
 			if (printingSequence == 0 && !onPattern) 
 			{
