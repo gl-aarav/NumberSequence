@@ -162,7 +162,7 @@ public class NumberSequenceV2
 	{
 
 		commonDifference = (int)(Math.random() * 10) + 1;
-		if (multiplyOrAdd.equalsIgnoreCase("Add") || multiplyOrAdd.equalsIgnoreCase("Substract"))
+		if (multiplyOrAdd.equalsIgnoreCase("Add") || multiplyOrAdd.equalsIgnoreCase("subtract"))
 		{
 
 			// Generate a random startNum between -10 and 10
@@ -177,7 +177,7 @@ public class NumberSequenceV2
 				pattern = "add " + commonDifference;
 
 			}
-			else if (multiplyOrAdd.equalsIgnoreCase("Substract"))
+			else if (multiplyOrAdd.equalsIgnoreCase("Subtract"))
 			{
 				nextTerm = startNum - commonDifference * 5;
 				// Set the pattern for the sequence (e.g., "add 5")
