@@ -119,9 +119,14 @@ public class NumberSequence
         {
             if (incorrectMeter < 3 && userInput != nextTerm) 
             {
-                incorrectMeter++; // Increment incorrect guess counter
-                printMessage();    // Print feedback message
-                getInput();        // Get new guess from user
+               incorrectMeter++; // Increment incorrect guess counter
+				if (incorrectMeter < 3 && userInput != nextTerm) {
+					printMessage();    // Print feedback message
+				}
+
+				if (incorrectMeter < 3 && userInput != nextTerm) {
+					getInput();        // Get new guess from user
+				}
             } 
             else 
             {
@@ -129,11 +134,13 @@ public class NumberSequence
                 stopLooping = true; // End the loop
             }
         } while (incorrectMeter <= 3 && !stopLooping); // Loop until max incorrect guesses or correct guess
-        
+        if(!stopLooping || incorrectMeter < 3)
+		{
         // Switch to pattern guessing mode after the sequence guessing loop
         onPattern = true;
         getInput();          // Get user input for the pattern
         printMessage();      // Print the result of pattern guess
+	}
     }
 
     // Method to create the sequence
@@ -197,7 +204,7 @@ public class NumberSequence
     // Method to print feedback based on user's guess
     public void printMessage() {
         // If the user has guessed incorrectly 3 times, print the correct next term
-        if (incorrectMeter >= 3 && !onPattern) 
+        if (incorrectMeter == 3 && !onPattern) 
         {
             System.out.println("\nIncorrect! The next term was: " + nextTerm);
             System.out.println("Also, The pattern was: " + pattern);
